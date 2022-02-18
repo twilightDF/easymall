@@ -1,15 +1,28 @@
 package cn.twilight.user.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class UserEntity {
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Data
+@Entity
+@Table(name = "user")
+public class UserEntity implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String password;
+
+    @Column
+    private String nickName;
+
+    @Column
+    private String email;
 }
