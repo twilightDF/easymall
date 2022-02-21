@@ -20,7 +20,7 @@ public class UserEntity implements Serializable {
     @Column
     private String password;
 
-    @Column
+    @Column(name = "nick_name")
     private String nickName;
 
     @Column

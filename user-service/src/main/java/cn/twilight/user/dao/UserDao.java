@@ -1,11 +1,15 @@
 package cn.twilight.user.dao;
 
-import org.apache.ibatis.annotations.Select;
+import cn.twilight.user.entity.UserEntity;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserDao {
+public interface UserDao extends CrudRepository<UserEntity, String> {
 
-    @Select("select * from user where name=${userName} and password=${pwd}}")
-    int selectUserByUserNameAndPwd(String userName,String pwd);
+    UserEntity findByNameAndPassword(String userName, String pwd);
+
+    Boolean existsByName(String userName);
+
+    UserEntity save(UserEntity user);
 }
